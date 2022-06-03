@@ -27,5 +27,21 @@ public class Summary<T> {
         return summarizers;
     }
 
+    public double degreeOfTruth() {
+        //TODO degree of truth
+        return 0;
+    }
+
+    public double degreeOfImprecision() {
+        double result = 1;
+
+        for (Label label : summarizers) {
+            result *= label.getFuzzySet().degreeOfFuzziness();
+        }
+
+        return 1 - Math.pow(result, 1.0 / summarizers.size());
+    }
+
+
 
 }

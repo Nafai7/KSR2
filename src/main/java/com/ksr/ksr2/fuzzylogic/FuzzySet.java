@@ -111,5 +111,9 @@ public class FuzzySet {
 
         return empty;
     }
+
+    public double degreeOfFuzziness() {
+        return (double) getSupport().getSet().size() / universeOfDiscourse.getSet().size();
+    }
     
 }

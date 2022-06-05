@@ -3,20 +3,20 @@ package com.ksr.ksr2.fuzzylogic;
 public class Quantifier {
     protected String name;
     protected boolean absolute;
-    protected Label label;
+    protected FuzzySet fuzzySet;
 
-    Quantifier(String name, boolean absolute, Label label) {
+    public Quantifier(String name, boolean absolute, FuzzySet fuzzySet) {
         this.name = name;
         this.absolute = absolute;
-        this.label = label;
+        this.fuzzySet = fuzzySet;
     }
 
     public String getName() {
         return name;
     }
 
-    public Label getLabel() {
-        return label;
+    public FuzzySet getSet() {
+        return fuzzySet;
     }
 
     public boolean isAbsolute() {

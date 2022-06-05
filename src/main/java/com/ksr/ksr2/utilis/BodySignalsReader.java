@@ -16,7 +16,7 @@ public class BodySignalsReader {
             BufferedReader br = new BufferedReader(new FileReader("src/main/resources/" + fileName + ".csv"));
             int counter = 0;
             String line = br.readLine();
-            while ((line = br.readLine()) != null && counter <= 10000) {
+            while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 result.add(new BodySignals(Integer.valueOf(values[0]),
                         values[1],

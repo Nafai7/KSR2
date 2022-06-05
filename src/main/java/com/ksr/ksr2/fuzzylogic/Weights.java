@@ -5,7 +5,7 @@ import java.util.List;
 public class Weights {
     List<Double> weights;
 
-    Weights(List<Double> weights) {
+    public Weights(List<Double> weights) {
         this.weights = weights;
     }
 

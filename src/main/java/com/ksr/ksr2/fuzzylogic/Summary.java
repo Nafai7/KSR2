@@ -25,7 +25,7 @@ public class Summary {
     private double T11 = 0;
     private double goodness = 0;
 
-    Summary(Quantifier quantifier, List<Label> qualifiers, List<Label> summarizers, List<BodySignals> bodySignals, Weights weights) {
+    public Summary(Quantifier quantifier, List<Label> qualifiers, List<Label> summarizers, List<BodySignals> bodySignals, Weights weights) {
         this.quantifier = quantifier;
         this.qualifiers = qualifiers;
         this.summarizers = summarizers;
@@ -89,6 +89,10 @@ public class Summary {
         return T11;
     }
 
+    public double goodnessOfTheSummary() {
+        return goodness;
+    }
+
     public void calcMeasures() {
         // T2
         T2 = 1;
@@ -103,7 +107,7 @@ public class Summary {
 
         // T6
         T6 = 0;
-        double support = quantifier.getLabel().getFuzzySet().getSupport();
+        double support = quantifier.getSet().getSupport();
         if (quantifier.isAbsolute()) {
             T6 = 1 - (support / bodySignals.size());
         } else {
@@ -112,7 +116,7 @@ public class Summary {
 
         // T7
         T7 = 0;
-        double cardinality = quantifier.getLabel().getFuzzySet().getCardinality();
+        double cardinality = quantifier.getSet().getCardinality();
         if (quantifier.isAbsolute()) {
             T7 = 1 - (cardinality / bodySignals.size());
         } else {
@@ -129,19 +133,23 @@ public class Summary {
 
         // T9
         T9 = 1;
-        for (Label qualifier: qualifiers) {
-            T9 *= qualifier.getFuzzySet().getSupport() / qualifier.getFuzzySet().getUniverse().getSize();
+        if (qualifiers.size() > 0) {
+            for (Label qualifier: qualifiers) {
+                T9 *= qualifier.getFuzzySet().getSupport() / qualifier.getFuzzySet().getUniverse().getSize();
+            }
+            T9 = Math.pow(T9, 1.0 / qualifiers.size());
+            T9 = 1 - T9;
         }
-        T9 = Math.pow(T9, 1.0 / qualifiers.size());
-        T9 = 1 - T9;
 
         // T10
         T10 = 1;
-        for (Label qualifier: qualifiers) {
-            T10 *= qualifier.getFuzzySet().getCardinality() / qualifier.getFuzzySet().getUniverse().getSize();
+        if (qualifiers.size() > 0) {
+            for (Label qualifier : qualifiers) {
+                T10 *= qualifier.getFuzzySet().getCardinality() / qualifier.getFuzzySet().getUniverse().getSize();
+            }
+            T10 = Math.pow(T10, 1.0 / qualifiers.size());
+            T10 = 1 - T10;
         }
-        T10 = Math.pow(T10, 1.0 / qualifiers.size());
-        T10 = 1 - T10;
 
         // T11
         if (qualifiers.size() > 0) {
@@ -195,7 +203,7 @@ public class Summary {
             }
         }
 
-        T1 = quantifier.getLabel().getFuzzySet().getMembershipFunction().getMembership(rTop / rBottom);
+        T1 = quantifier.getSet().getMembershipFunction().getMembership(rTop / rBottom);
         T3 = (cntTop * 1.0) / cntBottom;
 
         // T4
@@ -225,6 +233,46 @@ public class Summary {
         }
     }
 
+    public String toString() {
+        String result = "";
+        result += quantifier.getName() + " osob ";
+        if (qualifiers.size() > 0) {
+            result += "majacych ";
+            for (int i = 0; i < qualifiers.size(); i++) {
+                result += qualifiers.get(i).getLabel() + " " + qualifiers.get(i).getLinguisticVariableName();
+                if (i < qualifiers.size() - 1) {
+                    result += " i ";
+                }
+            }
+        }
 
+        result += "ma ";
+        for (int i = 0; i < summarizers.size(); i++) {
+            result += summarizers.get(i).getLabel() + " " + summarizers.get(i).getLinguisticVariableName();
+            if (i < summarizers.size() - 1) {
+                result += " i ";
+            }
+        }
+
+        return result;
+    }
+
+    public String measuresToString() {
+        String result = "";
+        result += goodness + ", ";
+        result += T1 + ", ";
+        result += T2 + ", ";
+        result += T3 + ", ";
+        result += T4 + ", ";
+        result += T5 + ", ";
+        result += T6 + ", ";
+        result += T7 + ", ";
+        result += T8 + ", ";
+        result += T9 + ", ";
+        result += T10 + ", ";
+        result += T11;
+
+        return result;
+    }
 
 }

@@ -5,7 +5,7 @@ public class Label {
     protected String label;
     protected FuzzySet fuzzySet;
 
-    Label(String linguisticVariableName, String label, FuzzySet fuzzySet) {
+    public Label(String linguisticVariableName, String label, FuzzySet fuzzySet) {
         this.linguisticVariableName = linguisticVariableName;
         this.label = label;
         this.fuzzySet = fuzzySet;

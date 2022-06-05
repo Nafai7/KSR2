@@ -91,25 +91,25 @@ public class BodySignals {
 
     public double get(String valueName) {
         switch (valueName) {
-            case "Cisnienie skurczowe krwi":
+            case "cisnienie skurczowe krwi":
                 return systolic;
-            case "Cisnienie rozkurczowe krwi":
+            case "cisnienie rozkurczowe krwi":
                 return relaxation;
-            case "Cukier we krwi na czczo":
+            case "cukier we krwi na czczo":
                 return fastingBloodSugar;
-            case "Poziom cholesterolu":
+            case "poziom cholesterolu":
                 return cholesterol;
-            case "Poziom triglycerydow":
+            case "poziom triglycerydow":
                 return triglyceride;
-            case "Poziom cholesterolu HDL":
+            case "poziom cholesterolu HDL":
                 return HDL;
-            case "Poziom cholesterolu LDL":
+            case "poziom cholesterolu LDL":
                 return LDL;
-            case "Poziom hemoglobiny":
+            case "poziom hemoglobiny":
                 return hemoglobin;
-            case "Poziom AST":
+            case "poziom AST":
                 return AST;
-            case "Poziom ALT":
+            case "poziom ALT":
                 return ALT;
         }
         return Double.NEGATIVE_INFINITY;

@@ -6,7 +6,7 @@ public class LinguisticVariable {
     protected String name;
     protected List<Label> labels;
 
-    LinguisticVariable(String name, List<Label> labels) {
+    public LinguisticVariable(String name, List<Label> labels) {
         this.name = name;
         this.labels = labels;
     }

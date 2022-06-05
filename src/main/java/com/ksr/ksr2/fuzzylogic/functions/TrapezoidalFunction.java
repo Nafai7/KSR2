@@ -1,6 +1,6 @@
 package com.ksr.ksr2.fuzzylogic.functions;
 
-public class TrapezoidalFunction  implements MembershipFunction{
+public class TrapezoidalFunction implements MembershipFunction {
     private final double leftMinimum;
     private final double rightMinimum;
     private final double leftMaximum;
@@ -13,7 +13,6 @@ public class TrapezoidalFunction  implements MembershipFunction{
         this.rightMaximum = rightMaximum;
     }
 
-    @Override
     public double getMembership(double x) {
         if (leftMinimum < leftMaximum) {
             if (x < leftMinimum || x > rightMinimum) {
@@ -38,12 +37,10 @@ public class TrapezoidalFunction  implements MembershipFunction{
         }
     }
 
-    @Override
     public double getCardinality() {
         return (rightMinimum - leftMinimum) + (rightMaximum - leftMaximum)/2;
     }
 
-    @Override
     public double getSupport() {
         return rightMinimum - leftMinimum;
     }

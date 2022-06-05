@@ -8,12 +8,12 @@ public class ClassicSet {
     protected double end;
     protected boolean discrete;
 
-    ClassicSet(List<Double> set) {
+    public ClassicSet(List<Double> set) {
         discrete = true;
         this.set = set;
     }
 
-    ClassicSet(double begin, double end) {
+    public ClassicSet(double begin, double end) {
         discrete = false;
         this.begin = begin;
         this.end = end;

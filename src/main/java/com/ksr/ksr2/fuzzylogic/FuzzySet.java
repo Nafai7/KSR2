@@ -1,5 +1,7 @@
 package com.ksr.ksr2.fuzzylogic;
 
+import com.ksr.ksr2.fuzzylogic.functions.MembershipFunction;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class FuzzySet {
     protected ClassicSet universeOfDiscourse;
     protected MembershipFunction membershipFunction;
 
-    FuzzySet(ClassicSet universeOfDiscourse, MembershipFunction membershipFunction) {
+    public FuzzySet(ClassicSet universeOfDiscourse, MembershipFunction membershipFunction) {
 
         this.universeOfDiscourse = universeOfDiscourse;
         this.membershipFunction = membershipFunction;
@@ -22,20 +24,7 @@ public class FuzzySet {
     }
 
     public double getSupport() {
-//        if (universeOfDiscourse.isDiscrete()) {
-//            List<Double> suppSet = new ArrayList<>();
-//            for (Double x : universeOfDiscourse.getSet()) {
-//                if (membershipFunction.getMembership(x) > 0) {
-//                    suppSet.add(x);
-//                }
-//            }
-//
-//            return new ClassicSet(suppSet);
-//        } else {
-//            //TODO support dla przedziału
-//        }
-
-        return 0;
+        return membershipFunction.getSupport();
     }
 
     public ClassicSet getAlphaCut(double alfa) {
@@ -72,16 +61,7 @@ public class FuzzySet {
     }
 
     public double getCardinality() {
-        double cardinality = 0;
-        if (universeOfDiscourse.isDiscrete()) {
-            for (Double x : universeOfDiscourse.getSet()) {
-                cardinality += membershipFunction.getMembership(x);
-            }
-        } else {
-            //TODO kardynalność dla przedziału
-        }
-
-        return cardinality;
+        return membershipFunction.getCardinality();
     }
 
     public boolean isNormal() {

@@ -1,14 +1,18 @@
 package com.ksr.ksr2;
 
+import com.ksr.ksr2.fuzzylogic.Label;
+import com.ksr.ksr2.fuzzylogic.Summary;
 import com.ksr.ksr2.fuzzylogic.functions.*;
 import com.ksr.ksr2.model.BodySignals;
 import com.ksr.ksr2.utilis.BodySignalsReader;
+import com.ksr.ksr2.utilis.InitialData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class App extends Application {
@@ -22,7 +26,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-//        List<BodySignals> test = BodySignalsReader.read("smoking");
+        List<BodySignals> test = BodySignalsReader.read("smoking");
 //        System.out.print(test.get(0).getGender() + " " + test.get(0).getAge() + " " + test.get(0).getSystolic());
 //        System.out.print("\n" + test.size());
 //        launch();
@@ -36,5 +40,13 @@ public class App extends Application {
 //        System.out.println("Membership: " + f.getMembership(30) + " " + f.getMembership(40));
 //        System.out.println("Cardinality: " + f.getCardinality());
 //        System.out.println("Support: " + f.getSupport());
+        InitialData initialData = new InitialData();
+        Summary summary = new Summary(initialData.quantifiers.get(0), new ArrayList<Label>(), initialData.labels.subList(2,4), test, initialData.weights);
+        summary.calcMeasures();
+        System.out.print(summary.toString() + " " + summary.measuresToString());
+        System.out.print("\n");
+        Summary summary2 = new Summary(initialData.quantifiers.get(2), new ArrayList<Label>(), initialData.labels.subList(2,3), test, initialData.weights);
+        summary2.calcMeasures();
+        System.out.print(summary2.toString() + " " + summary2.measuresToString());
     }
 }

@@ -27,7 +27,7 @@ public class InitialData {
         labels.add(new Label("cisnienie skurczowe krwi", "nadcisnienie tetnicze 3. stopnia", new FuzzySet(new ClassicSet(170, 240), new TrapezoidalFunction(170, 240, 180, 240))));
 
         labels.add(new Label("cisnienie rozkurczowe krwi", "hipotonia", new FuzzySet(new ClassicSet(40, 69), new TrapezoidalFunction(40, 69, 40, 59))));
-        labels.add(new Label("cisnienie rozkurczowe krwi", "niskie prawidlowe", new FuzzySet(new ClassicSet(50, 83), new TrapezoidalFunction(50, 83, 60, 79))));
+        labels.add(new Label("cisnienie rozkurczowe krwi", "niskie prawidlowe", new FuzzySet(new ClassicSet(50, 83), new TrapezoidalFunction(50, 83, 60, 80))));
         labels.add(new Label("cisnienie rozkurczowe krwi", "prawidlowe", new FuzzySet(new ClassicSet(77, 87), new TrapezoidalFunction(77, 87, 80, 84))));
         labels.add(new Label("cisnienie rozkurczowe krwi", "wysokie prawidlowe", new FuzzySet(new ClassicSet(82, 94), new TrapezoidalFunction(82, 94, 85, 89))));
         labels.add(new Label("cisnienie rozkurczowe krwi", "nadcisnienie tetnicze 1. stopnia", new FuzzySet(new ClassicSet(85, 104), new TrapezoidalFunction(85, 104, 90, 99))));
@@ -43,11 +43,11 @@ public class InitialData {
         labels.add(new Label("poziom cholesterolu", "podniesiony poziom", new FuzzySet(new ClassicSet(200, 255), new TrapezoidalFunction(200, 255, 210, 255))));
         labels.add(new Label("poziom cholesterolu", "znacznie podniesiony poziom", new FuzzySet(new ClassicSet(235, 300), new TrapezoidalFunction(235, 300, 260, 300))));
 
-//        labels.add(new Label("poziom triglycerydow", "wlasciwy poziom", new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+        labels.add(new Label("poziom triglycerydow", "wlasciwy poziom", new FuzzySet(new ClassicSet(100, 56 * Math.PI), new SinusoidalFunction(100, 56 * Math.PI, 100, 46 * Math.PI, 19))));
         labels.add(new Label("poziom triglycerydow", "podniesiony poziom", new FuzzySet(new ClassicSet(160, 200), new TrapezoidalFunction(160, 200, 180, 200))));
 
         labels.add(new Label("poziom cholesterolu HDL", "zanizony poziom", new FuzzySet(new ClassicSet(0, 30), new TrapezoidalFunction(0, 30, 0, 20))));
-//        labels.add(new Label("poziom cholesterolu HDL", "wlasciwy poziom", new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+        labels.add(new Label("poziom cholesterolu HDL", "wlasciwy poziom", new FuzzySet(new ClassicSet(6 * Math.PI, 80), new SinusoidalFunction(6 * Math.PI, 80, 16 * Math.PI, 80, 9))));
 
         labels.add(new Label("poziom cholesterolu LDL", "normalny poziom", new FuzzySet(new ClassicSet(100, 140), new TrapezoidalFunction(100, 140, 100, 130))));
         labels.add(new Label("poziom cholesterolu LDL", "podniesiony poziom", new FuzzySet(new ClassicSet(135, 155), new TrapezoidalFunction(135, 155, 140, 155))));
@@ -77,11 +77,11 @@ public class InitialData {
         linguisticVariables.add(new LinguisticVariable("poziom ALT", labels.subList(33, 35)));
 
         // Quantifiers
-//        quantifiers.add(new Quantifier("brak", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
-//        quantifiers.add(new Quantifier("marginalnie", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
-//        quantifiers.add(new Quantifier("umiarkowanie", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
-//        quantifiers.add(new Quantifier("duzo", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
-//        quantifiers.add(new Quantifier("calkowicie", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+        quantifiers.add(new Quantifier("brak", false, new FuzzySet(new ClassicSet(0, Math.PI/24), new SinusoidalFunction(0, Math.PI/24, 12.0/24.0, 24))));
+        quantifiers.add(new Quantifier("marginalnie", false, new FuzzySet(new ClassicSet(0, 0.5), new SinusoidalFunction(0, 0.5, -6.0/12.0, 12))));
+        quantifiers.add(new Quantifier("umiarkowanie", false, new FuzzySet(new ClassicSet(0.5 - Math.PI/12, 0.5 + Math.PI/12), new SinusoidalFunction(0.5 - Math.PI/12, 0.5 + Math.PI/12, 17.0/24.0, 24))));
+        quantifiers.add(new Quantifier("duzo", false, new FuzzySet(new ClassicSet(0.5, 1), new SinusoidalFunction(0, 0.5, -6.0/12.0, 12))));
+        quantifiers.add(new Quantifier("calkowicie", false, new FuzzySet(new ClassicSet(1 - Math.PI/24, 1), new SinusoidalFunction(1 - Math.PI/24, 1, 20.0/24.0, 24))));
 
         quantifiers.add(new Quantifier("ponizej 10 tys", true, new FuzzySet(new ClassicSet(0, 12000), new TrapezoidalFunction(0, 12000, 0, 10000))));
         quantifiers.add(new Quantifier("niemalze 12.3 tys", true, new FuzzySet(new ClassicSet(10000, 15000), new TriangularFunction(10000, 15000, 12300))));

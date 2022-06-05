@@ -15,14 +15,26 @@ public class TrapezoidalFunction  implements MembershipFunction{
 
     @Override
     public double getMembership(double x) {
-        if (x < leftMinimum || x > rightMinimum) {
-            return 0;
-        } else if (x >= leftMaximum && x <= rightMaximum) {
-            return 1;
-        } else if (x < leftMaximum) {
-            return (x - leftMinimum)/(leftMaximum - leftMinimum);
+        if (leftMinimum < leftMaximum) {
+            if (x < leftMinimum || x > rightMinimum) {
+                return 0;
+            } else if (x >= leftMaximum && x <= rightMaximum) {
+                return 1;
+            } else if (x < leftMaximum) {
+                return Math.abs((x - leftMinimum)/(leftMaximum - leftMinimum));
+            } else {
+                return Math.abs((rightMinimum - x)/(rightMinimum - rightMaximum));
+            }
         } else {
-            return (rightMinimum - x)/(rightMinimum - rightMaximum);
+            if (x < leftMaximum || x > rightMaximum) {
+                return 1;
+            } else if (x >= leftMinimum && x <= rightMinimum) {
+                return 0;
+            } else if (x > rightMinimum) {
+                return Math.abs((x - rightMinimum)/(rightMaximum - rightMinimum));
+            } else {
+                return Math.abs((leftMinimum - x)/(leftMinimum - leftMaximum));
+            }
         }
     }
 

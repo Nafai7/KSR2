@@ -27,13 +27,13 @@ public class App extends Application {
 //        System.out.print("\n" + test.size());
 //        launch();
 //        SinusoidalFunction(double leftMinimum, double rightMinimum, int piValue, double leftMaximum, double rightMaximum) {
-        MembershipFunction f;
+//        MembershipFunction f;
 // D       f = new SinusoidalFunction(100, 56 * Math.PI, 100, 46 * Math.PI, 19);
 // D       f = new TriangularFunction(10, 37, 21);
-// Dn       f = new TrapezoidalFunction(150, 220, 150, 190);
+// D       f = new TrapezoidalFunction(17, 25, 6, 45);
 // D       f = new QuadraticFunction(3, 15, 3, 5, true);
 // D       f = new SinusoidalFunction((6-Math.PI)/12, (6+Math.PI)/12, 17.0/24.0, 24);
-//        System.out.println("Membership: " + f.getMembership(0.45) + " " + f.getMembership(0.55));
+//        System.out.println("Membership: " + f.getMembership(30) + " " + f.getMembership(40));
 //        System.out.println("Cardinality: " + f.getCardinality());
 //        System.out.println("Support: " + f.getSupport());
     }

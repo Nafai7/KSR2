@@ -9,6 +9,10 @@ public class Weights {
         this.weights = weights;
     }
 
+    public List<Double> getWeights() {
+        return weights;
+    }
+
     public void setWeights(List<Double> weights) {
         this.weights = weights;
     }

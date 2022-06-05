@@ -21,21 +21,21 @@ public class FuzzySet {
         return membershipFunction;
     }
 
-    public ClassicSet getSupport() {
-        if (universeOfDiscourse.isDiscrete()) {
-            List<Double> suppSet = new ArrayList<>();
-            for (Double x : universeOfDiscourse.getSet()) {
-                if (membershipFunction.getMembership(x) > 0) {
-                    suppSet.add(x);
-                }
-            }
+    public double getSupport() {
+//        if (universeOfDiscourse.isDiscrete()) {
+//            List<Double> suppSet = new ArrayList<>();
+//            for (Double x : universeOfDiscourse.getSet()) {
+//                if (membershipFunction.getMembership(x) > 0) {
+//                    suppSet.add(x);
+//                }
+//            }
+//
+//            return new ClassicSet(suppSet);
+//        } else {
+//            //TODO support dla przedziału
+//        }
 
-            return new ClassicSet(suppSet);
-        } else {
-            //TODO support dla przedziału
-        }
-
-        return null;
+        return 0;
     }
 
     public ClassicSet getAlphaCut(double alfa) {
@@ -112,8 +112,8 @@ public class FuzzySet {
         return empty;
     }
 
-    public double degreeOfFuzziness() {
-        return (double) getSupport().getSet().size() / universeOfDiscourse.getSet().size();
-    }
+//    public double degreeOfFuzziness() {
+//        return (double) getSupport().getSet().size() / universeOfDiscourse.getSet().size();
+//    }
     
 }

@@ -1,26 +1,44 @@
 package com.ksr.ksr2.fuzzylogic;
 
+import com.ksr.ksr2.model.BodySignals;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class Summary<T> {
+public class Summary {
     protected Quantifier quantifier;
-    protected Label qualifier;
+    protected List<Label> qualifiers;
     protected List<Label> summarizers;
-    protected List<T> objects;
+    protected List<BodySignals> bodySignals;
 
-    Summary(Quantifier quantifier, Label qualifier, List<Label> summarizers, List<T> objects) {
+    private Weights weights;
+    private double T1 = 0;
+    private double T2 = 0;
+    private double T3 = 0;
+    private double T4 = 0;
+    private double T5 = 0;
+    private double T6 = 0;
+    private double T7 = 0;
+    private double T8 = 0;
+    private double T9 = 0;
+    private double T10 = 0;
+    private double T11 = 0;
+    private double goodness = 0;
+
+    Summary(Quantifier quantifier, List<Label> qualifiers, List<Label> summarizers, List<BodySignals> bodySignals, Weights weights) {
         this.quantifier = quantifier;
-        this.qualifier = qualifier;
+        this.qualifiers = qualifiers;
         this.summarizers = summarizers;
-        this.objects = objects;
+        this.bodySignals = bodySignals;
+        this.weights = weights;
     }
 
     public Quantifier getQuantifier() {
         return quantifier;
     }
 
-    public Label getQualifier() {
-        return qualifier;
+    public List<Label> getQualifiers() {
+        return qualifiers;
     }
 
     public List<Label> getSummarizers() {
@@ -28,18 +46,183 @@ public class Summary<T> {
     }
 
     public double degreeOfTruth() {
-        //TODO degree of truth
-        return 0;
+        return T1;
     }
 
     public double degreeOfImprecision() {
-        double result = 1;
+        return T2;
+    }
 
-        for (Label label : summarizers) {
-            result *= label.getFuzzySet().degreeOfFuzziness();
+    public double degreeOfCovering() {
+        return T3;
+    }
+
+    public double degreeOfAppropriateness() {
+        return T4;
+    }
+
+    public double lengthOfSummary() {
+        return T5;
+    }
+
+    public double degreeOfQuantifierImprecision() {
+        return T6;
+    }
+
+    public double degreeOfQuantifierCardinality() {
+        return T7;
+    }
+
+    public double degreeOfSummarizerCardinality() {
+        return T8;
+    }
+
+    public double degreeOfQualifierImprecision() {
+        return T9;
+    }
+
+    public double degreeOfQualifierCardinality() {
+        return T10;
+    }
+
+    public double lengthOfQualifier() {
+        return T11;
+    }
+
+    public void calcMeasures() {
+        // T2
+        T2 = 1;
+        for (Label summarizer: summarizers) {
+            T2 *= summarizer.getFuzzySet().getSupport() / summarizer.getFuzzySet().getUniverse().getSize();
+        }
+        T2 = Math.pow(T2, 1.0/summarizers.size());
+        T2 = 1 - T2;
+
+        // T5
+        T5 = 2 * Math.pow(0.5, summarizers.size());
+
+        // T6
+        T6 = 0;
+        double support = quantifier.getLabel().getFuzzySet().getSupport();
+        if (quantifier.isAbsolute()) {
+            T6 = 1 - (support / bodySignals.size());
+        } else {
+            T6 = 1 - support;
         }
 
-        return 1 - Math.pow(result, 1.0 / summarizers.size());
+        // T7
+        T7 = 0;
+        double cardinality = quantifier.getLabel().getFuzzySet().getCardinality();
+        if (quantifier.isAbsolute()) {
+            T7 = 1 - (cardinality / bodySignals.size());
+        } else {
+            T7 = 1 - cardinality;
+        }
+
+        // T8
+        T8 = 1;
+        for (Label summarizer: summarizers) {
+            T8 *= summarizer.getFuzzySet().getCardinality() / summarizer.getFuzzySet().getUniverse().getSize();
+        }
+        T8 = Math.pow(T8, 1.0 / summarizers.size());
+        T8 = 1 - T8;
+
+        // T9
+        T9 = 1;
+        for (Label qualifier: qualifiers) {
+            T9 *= qualifier.getFuzzySet().getSupport() / qualifier.getFuzzySet().getUniverse().getSize();
+        }
+        T9 = Math.pow(T9, 1.0 / qualifiers.size());
+        T9 = 1 - T9;
+
+        // T10
+        T10 = 1;
+        for (Label qualifier: qualifiers) {
+            T10 *= qualifier.getFuzzySet().getCardinality() / qualifier.getFuzzySet().getUniverse().getSize();
+        }
+        T10 = Math.pow(T10, 1.0 / qualifiers.size());
+        T10 = 1 - T10;
+
+        // T11
+        if (qualifiers.size() > 0) {
+            T11 = 2 * Math.pow(0.5, qualifiers.size());
+        } else {
+            T11 = 0;
+        }
+
+        // T1 & T3
+        double rTop = 0;
+        double rBottom = 0;
+        int[] cntSummarizersMoreThanZero = new int[summarizers.size()];
+        int cntTop = 0;
+        int cntBottom = 0;
+
+        for (BodySignals bodySignal: bodySignals) {
+            List<Double> summarizerMembership = new ArrayList<>();
+            List<Double> qualifierMembership = new ArrayList<>();
+
+            for (int i = 0; i < summarizers.size(); i++) {
+                Label summarizer = summarizers.get(i);
+                double membership = summarizer.getFuzzySet().getMembershipFunction().getMembership(bodySignal.get(summarizer.getLinguisticVariableName()));
+                summarizerMembership.add(membership);
+                if (membership > 0) {
+                    cntSummarizersMoreThanZero[i] += 1;
+                }
+            }
+
+            for (Label qualifier: qualifiers) {
+                qualifierMembership.add(qualifier.getFuzzySet().getMembershipFunction().getMembership(bodySignal.get(qualifier.getLinguisticVariableName())));
+            }
+
+            double tmp = summarizerMembership.stream().sorted().toList().get(0);
+            double tmp2 = 1.0;
+
+            if (qualifiers.size() > 0) {
+                tmp2 = qualifierMembership.stream().sorted().toList().get(0);
+            }
+
+            double membership = Math.min(tmp, tmp2);
+
+            rTop += membership;
+            rBottom += tmp2;
+
+            if (membership > 0) {
+                cntTop += 1;
+            }
+
+            if (tmp2 > 0) {
+                cntBottom += 1;
+            }
+        }
+
+        T1 = quantifier.getLabel().getFuzzySet().getMembershipFunction().getMembership(rTop / rBottom);
+        T3 = (cntTop * 1.0) / cntBottom;
+
+        // T4
+        T4 = 1.0;
+        for (int i = 0; i < summarizers.size(); i++) {
+            T4 *= (cntSummarizersMoreThanZero[i] * 1.0) / bodySignals.size();
+        }
+        T4 -= T3;
+        T4 = Math.abs(T4);
+
+        List<Double> measures = new ArrayList<>();
+        measures.add(T1);
+        measures.add(T2);
+        measures.add(T3);
+        measures.add(T4);
+        measures.add(T5);
+        measures.add(T6);
+        measures.add(T7);
+        measures.add(T8);
+        measures.add(T9);
+        measures.add(T10);
+        measures.add(T11);
+
+        goodness = 0;
+        for (int i = 0; i < measures.size(); i++) {
+            goodness += weights.getWeights().get(i) * measures.get(i);
+        }
     }
 
 

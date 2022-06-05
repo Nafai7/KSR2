@@ -19,6 +19,14 @@ public class ClassicSet {
         this.end = end;
     }
 
+    public double getSize() {
+        if (discrete) {
+            return set.size();
+        } else {
+            return end - begin;
+        }
+    }
+
     public List<Double> getSet() {
         return set;
     }

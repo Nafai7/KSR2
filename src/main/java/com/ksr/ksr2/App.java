@@ -1,5 +1,6 @@
 package com.ksr.ksr2;
 
+import com.ksr.ksr2.fuzzylogic.functions.*;
 import com.ksr.ksr2.model.BodySignals;
 import com.ksr.ksr2.utilis.BodySignalsReader;
 import javafx.application.Application;
@@ -25,5 +26,14 @@ public class App extends Application {
 //        System.out.print(test.get(0).getGender() + " " + test.get(0).getAge() + " " + test.get(0).getSystolic());
 //        System.out.print("\n" + test.size());
 //        launch();
+//        SinusoidalFunction(double leftMinimum, double rightMinimum, int piValue, double leftMaximum, double rightMaximum) {
+//        MembershipFunction f;
+//// N       f = new SinusoidalFunction(100, 56 * Math.PI, 19, 100, 46 * Math.PI);
+//// D       f = new TriangularFunction(10, 37, 21);
+//// Dn       f = new TrapezoidalFunction(150, 220, 150, 190);
+//// D       f = new QuadraticFunction(3, 15, 3, 5, true);
+//        System.out.println("Membership: " + f.getMembership(4) + " " + f.getMembership(10.5));
+//        System.out.println("Cardinality: " + f.getCardinality());
+//        System.out.println("Support: " + f.getSupport());
     }
 }

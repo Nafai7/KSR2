@@ -66,17 +66,23 @@ public class InitialData {
 
         // Linguistic Variables
         linguisticVariables.add(new LinguisticVariable("cisnienie skurczowe krwi", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie rozkurczowe krwi", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie", labels.subList(0, 7)));
+        linguisticVariables.add(new LinguisticVariable("cisnienie rozkurczowe krwi", labels.subList(7, 14)));
+        linguisticVariables.add(new LinguisticVariable("cukier we krwi na czczo", labels.subList(14, 18)));
+        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu", labels.subList(18, 21)));
+        linguisticVariables.add(new LinguisticVariable("poziom triglycerydow", labels.subList(21, 23)));
+        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu HDL", labels.subList(23, 25)));
+        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu LDL", labels.subList(25, 28)));
+        linguisticVariables.add(new LinguisticVariable("poziom hemoglobiny", labels.subList(28, 31)));
+        linguisticVariables.add(new LinguisticVariable("poziom AST", labels.subList(31, 33)));
+        linguisticVariables.add(new LinguisticVariable("poziom ALT", labels.subList(33, 35)));
 
         // Quantifiers
+//        quantifiers.add(new Quantifier("brak", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+//        quantifiers.add(new Quantifier("marginalnie", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+//        quantifiers.add(new Quantifier("umiarkowanie", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+//        quantifiers.add(new Quantifier("duzo", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+//        quantifiers.add(new Quantifier("calkowicie", false, new FuzzySet(new ClassicSet(), new SinusoidalFunction())));
+
         quantifiers.add(new Quantifier("ponizej 10 tys", true, new FuzzySet(new ClassicSet(0, 12000), new TrapezoidalFunction(0, 12000, 0, 10000))));
         quantifiers.add(new Quantifier("niemalze 12.3 tys", true, new FuzzySet(new ClassicSet(10000, 15000), new TriangularFunction(10000, 15000, 12300))));
         quantifiers.add(new Quantifier("powyzej 15 tys", true, new FuzzySet(new ClassicSet(13000, 56000), new TrapezoidalFunction(13000, 56000, 15000, 56000))));

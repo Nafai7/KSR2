@@ -58,7 +58,7 @@ public class InitialData {
         labels.add(new Label("poziom hemoglobiny", "powyzej normy", new FuzzySet(new ClassicSet(15, 26), new QuadraticFunction(15, 26, 25, 26, false))));
 
         labels.add(new Label("poziom AST", "norma", new FuzzySet(new ClassicSet(10, 37), new TriangularFunction(10, 37, 21))));
-//        labels.add(new Label("poziom AST", "nietypowy", new FuzzySet(new ClassicSet(), new TrapezoidalFunction())));
+        labels.add(new Label("poziom AST", "nietypowy", new FuzzySet(new ClassicSet(6, 45), new TrapezoidalFunction(17, 25, 6, 45))));
 
         labels.add(new Label("poziom ALT", "norma", new FuzzySet(new ClassicSet(15, 35), new TriangularFunction(15, 35, 26))));
         labels.add(new Label("poziom ALT", "nieprawidlowy", new FuzzySet(new ClassicSet(28, 45), new TrapezoidalFunction(28, 45, 40, 45))));

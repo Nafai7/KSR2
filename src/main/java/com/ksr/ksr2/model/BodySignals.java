@@ -88,4 +88,30 @@ public class BodySignals {
     public boolean isSmoking() {
         return smoking;
     }
+
+    public double get(String valueName) {
+        switch (valueName) {
+            case "Cisnienie skurczowe krwi":
+                return systolic;
+            case "Cisnienie rozkurczowe krwi":
+                return relaxation;
+            case "Cukier we krwi na czczo":
+                return fastingBloodSugar;
+            case "Poziom cholesterolu":
+                return cholesterol;
+            case "Poziom triglycerydow":
+                return triglyceride;
+            case "Poziom cholesterolu HDL":
+                return HDL;
+            case "Poziom cholesterolu LDL":
+                return LDL;
+            case "Poziom hemoglobiny":
+                return hemoglobin;
+            case "Poziom AST":
+                return AST;
+            case "Poziom ALT":
+                return ALT;
+        }
+        return Double.NEGATIVE_INFINITY;
+    }
 }

@@ -5,11 +5,11 @@ public class SinusoidalFunction implements MembershipFunction{
     private final double rightMinimum;
     private final double leftMaximum;
     private final double rightMaximum;
-    private final int piValue;
+    private final double piValue;
     private final int xValue;
 
     //for label functions
-    public SinusoidalFunction(double leftMinimum, double rightMinimum, int piValue, double leftMaximum, double rightMaximum) {
+    public SinusoidalFunction(double leftMinimum, double rightMinimum, double leftMaximum, double rightMaximum, double piValue) {
         this.leftMinimum = leftMinimum;
         this.rightMinimum = rightMinimum;
         this.leftMaximum = leftMaximum;
@@ -19,11 +19,11 @@ public class SinusoidalFunction implements MembershipFunction{
     }
 
     //for quantifier functions
-    public SinusoidalFunction(double leftMinimum, double rightMinimum, int piValue, int xValue, double leftMaximum, double rightMaximum) {
+    public SinusoidalFunction(double leftMinimum, double rightMinimum, double piValue, int xValue) {
         this.leftMinimum = leftMinimum;
         this.rightMinimum = rightMinimum;
-        this.leftMaximum = leftMaximum;
-        this.rightMaximum = rightMaximum;
+        this.leftMaximum = (rightMinimum - leftMinimum) / 2;
+        this.rightMaximum = (rightMinimum - leftMinimum) / 2;;
         this.piValue = piValue;
         this.xValue = xValue;
     }
@@ -36,9 +36,9 @@ public class SinusoidalFunction implements MembershipFunction{
             return 1;
         } else {
             if (xValue == 0) {
-                return (Math.sin((x + piValue * Math.PI)/rightMinimum - rightMaximum) + 1)/2;
+                return (Math.sin((x + (piValue * Math.PI))/10) + 1) / 2;
             } else {
-                return (Math.sin(xValue * x + piValue * Math.PI / 24) + 1)/2;
+                return (Math.sin((xValue * x) + (piValue * Math.PI)) + 1) / 2;
             }
         }
     }

@@ -237,7 +237,7 @@ public class Summary {
         String result = "";
         result += quantifier.getName() + " osob ";
         if (qualifiers.size() > 0) {
-            result += "majacych ";
+            result += " majacych ";
             for (int i = 0; i < qualifiers.size(); i++) {
                 result += qualifiers.get(i).getLabel() + " " + qualifiers.get(i).getLinguisticVariableName();
                 if (i < qualifiers.size() - 1) {
@@ -246,7 +246,7 @@ public class Summary {
             }
         }
 
-        result += "ma ";
+        result += " ma ";
         for (int i = 0; i < summarizers.size(); i++) {
             result += summarizers.get(i).getLabel() + " " + summarizers.get(i).getLinguisticVariableName();
             if (i < summarizers.size() - 1) {
@@ -259,18 +259,18 @@ public class Summary {
 
     public String measuresToString() {
         String result = "";
-        result += goodness + ", ";
-        result += T1 + ", ";
-        result += T2 + ", ";
-        result += T3 + ", ";
-        result += T4 + ", ";
-        result += T5 + ", ";
-        result += T6 + ", ";
-        result += T7 + ", ";
-        result += T8 + ", ";
-        result += T9 + ", ";
-        result += T10 + ", ";
-        result += T11;
+        result += Math.round(goodness * 1000)/1000.0 + ", ";
+        result += Math.round(T1 * 1000)/1000.0 + ", ";
+        result += Math.round(T2 * 1000)/1000.0 + ", ";
+        result += Math.round(T3 * 1000)/1000.0 + ", ";
+        result += Math.round(T4 * 1000)/1000.0 + ", ";
+        result += Math.round(T5 * 1000)/1000.0 + ", ";
+        result += Math.round(T6 * 1000)/1000.0 + ", ";
+        result += Math.round(T7 * 1000)/1000.0 + ", ";
+        result += Math.round(T8 * 1000)/1000.0 + ", ";
+        result += Math.round(T9 * 1000)/1000.0 + ", ";
+        result += Math.round(T10 * 1000)/1000.0 + ", ";
+        result += Math.round(T11 * 1000)/1000.0;
 
         return result;
     }

@@ -1,6 +1,7 @@
 package com.ksr.ksr2;
 
 import com.ksr.ksr2.fuzzylogic.Label;
+import com.ksr.ksr2.fuzzylogic.Quantifier;
 import com.ksr.ksr2.fuzzylogic.Summary;
 import com.ksr.ksr2.fuzzylogic.functions.*;
 import com.ksr.ksr2.model.BodySignals;
@@ -41,12 +42,34 @@ public class App extends Application {
 //        System.out.println("Cardinality: " + f.getCardinality());
 //        System.out.println("Support: " + f.getSupport());
         InitialData initialData = new InitialData();
-        Summary summary = new Summary(initialData.quantifiers.get(0), new ArrayList<Label>(), initialData.labels.subList(2,4), test, initialData.weights);
-        summary.calcMeasures();
-        System.out.print(summary.toString() + " " + summary.measuresToString());
-        System.out.print("\n");
-        Summary summary2 = new Summary(initialData.quantifiers.get(2), new ArrayList<Label>(), initialData.labels.subList(2,3), test, initialData.weights);
-        summary2.calcMeasures();
-        System.out.print(summary2.toString() + " " + summary2.measuresToString());
+        Summary summary;
+        List<Quantifier> quantifiersArr = new ArrayList<>();
+        quantifiersArr.add(initialData.quantifiers.get(1));
+        quantifiersArr.add(initialData.quantifiers.get(2));
+        quantifiersArr.add(initialData.quantifiers.get(7));
+        List<Label> qualifiersArr = new ArrayList<>();
+        qualifiersArr.add(initialData.labels.get(0));
+        qualifiersArr.add(initialData.labels.get(4));
+        List<Label> summarizersArr = new ArrayList<>();
+        summarizersArr.add(initialData.labels.get(31));
+        summarizersArr.add(initialData.labels.get(33));
+        List<Label> tmp1;
+        List<Label> tmp2;
+        int i = 0;
+        for (Quantifier q : quantifiersArr) {
+            for (Label ql : qualifiersArr) {
+                for (Label s : summarizersArr) {
+                    tmp1 = new ArrayList<>();
+                    tmp1.add(ql);
+                    tmp2 = new ArrayList<>();
+                    tmp2.add(s);
+                    tmp2.add(initialData.labels.get(15));
+                    summary = new Summary(q, tmp1, tmp2, test, initialData.weights);
+                    summary.calcMeasures();
+                    i ++;
+                    System.out.println("P" + i + " " + summary.toString() + "\n    " + summary.measuresToString());
+                }
+            }
+        }
     }
 }

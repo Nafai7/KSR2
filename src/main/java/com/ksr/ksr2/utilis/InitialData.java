@@ -85,7 +85,7 @@ public class InitialData {
 
         quantifiers.add(new Quantifier("ponizej 10 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TrapezoidalFunction(0, 12000, 0, 10000))));
         quantifiers.add(new Quantifier("niemalze 12.3 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TriangularFunction(10000, 15000, 12300))));
-        quantifiers.add(new Quantifier("powyzej 15 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TrapezoidalFunction(13000, 55692, 15000, 55692))));
+        quantifiers.add(new Quantifier("powyzej 15 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TrapezoidalFunction(13000, 50000, 15000, 50000))));
 
         // Weights
         List<Double> tmp = new ArrayList<>();

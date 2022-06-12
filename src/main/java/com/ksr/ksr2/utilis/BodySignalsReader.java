@@ -31,7 +31,7 @@ public class BodySignalsReader {
                         Double.valueOf(values[17]),
                         Double.valueOf(values[19]),
                         Double.valueOf(values[20]),
-                        Boolean.valueOf(values[26])));
+                        convertToBoolean(values[26])));
                 counter++;
             }
         } catch (Exception ex) {
@@ -39,5 +39,13 @@ public class BodySignalsReader {
         }
 
         return result;
+    }
+
+    private static boolean convertToBoolean(String s) {
+        if (s.equals("0")) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

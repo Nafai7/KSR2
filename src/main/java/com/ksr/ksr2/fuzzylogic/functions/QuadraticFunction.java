@@ -54,7 +54,7 @@ public class QuadraticFunction implements MembershipFunction{
     public double getCardinality() {
         double cardinality = 0;
         for (double i = leftMinimum; i < rightMinimum; i += 0.1) {
-            cardinality += (getMembership(i) + getMembership(i + 1) / 2 * 0.1);
+            cardinality += ((getMembership(i) + getMembership(i + 1)  * 0.1) / 2);
         }
         return cardinality;
     }

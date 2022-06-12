@@ -164,7 +164,7 @@ public class MultiSubjectSummary {
             }
         }
 
-        result += " [" + (Math.round(T * 100.0) / 100.0) + "]";
+        result += " [" + (Math.round(T * 1000.0) / 1000.0) + "]";
 
         return result;
     }

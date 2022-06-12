@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class App extends Application {
     @Override
@@ -73,25 +74,69 @@ public class App extends Application {
         }
 
         // FORMA 1
+        System.out.print("FORMA 1\n");
         MultiSubjectSummary form1 = new MultiSubjectSummary(initialData.quantifiers.get(2), initialData.labels.subList(10,11), smokers, nonSmokers, "palacze", "niepalacy");
         form1.calcT();
         System.out.print(form1.toString());
         System.out.print("\n");
 
+        form1 = new MultiSubjectSummary(initialData.quantifiers.get(3), Stream.concat(initialData.labels.subList(14,15).stream(), initialData.labels.subList(18,19).stream()).toList(), smokers, nonSmokers, "palacze", "niepalacy");
+        form1.calcT();
+        System.out.print(form1.toString());
+        System.out.print("\n");
+
+        form1 = new MultiSubjectSummary(initialData.quantifiers.get(3), Stream.concat(initialData.labels.subList(5,6).stream(), initialData.labels.subList(26,27).stream()).toList(), smokers, nonSmokers, "palacze", "niepalacy");
+        form1.calcT();
+        System.out.print(form1.toString());
+        System.out.print("\n");
+
         // FORMA 2
-        MultiSubjectSummary form2 = new MultiSubjectSummary(initialData.quantifiers.get(2), initialData.labels.subList(10,11), smokers, nonSmokers, initialData.labels.subList(20, 21), false, "palacze", "niepalacy");
+        System.out.print("FORMA 2\n");
+        MultiSubjectSummary form2 = new MultiSubjectSummary(initialData.quantifiers.get(2), initialData.labels.subList(9,10), smokers, nonSmokers, initialData.labels.subList(19, 20), false, "palacze", "niepalacy");
+        form2.calcT();
+        System.out.print(form2.toString());
+        System.out.print("\n");
+
+        form2 = new MultiSubjectSummary(initialData.quantifiers.get(1), Stream.concat(initialData.labels.subList(14,15).stream(), initialData.labels.subList(18,19).stream()).toList(), smokers, nonSmokers, Stream.concat(initialData.labels.subList(20,21).stream(), initialData.labels.subList(32,33).stream()).toList(), false, "palacze", "niepalacy");
+        form2.calcT();
+        System.out.print(form2.toString());
+        System.out.print("\n");
+
+        form2 = new MultiSubjectSummary(initialData.quantifiers.get(3), Stream.concat(initialData.labels.subList(14,15).stream(), initialData.labels.subList(18,19).stream()).toList(), smokers, nonSmokers, Stream.concat(initialData.labels.subList(20,21).stream(), initialData.labels.subList(32,33).stream()).toList(), false, "palacze", "niepalacy");
         form2.calcT();
         System.out.print(form2.toString());
         System.out.print("\n");
 
         // FORMA 3
+        System.out.print("FORMA 3\n");
         MultiSubjectSummary form3 = new MultiSubjectSummary(initialData.quantifiers.get(2), initialData.labels.subList(10,11), smokers, nonSmokers, initialData.labels.subList(20, 21), true, "palacze", "niepalacy");
         form3.calcT();
         System.out.print(form3.toString());
         System.out.print("\n");
 
+        form3 = new MultiSubjectSummary(initialData.quantifiers.get(3), initialData.labels.subList(5,6), smokers, nonSmokers, initialData.labels.subList(26, 27), true, "palacze", "niepalacy");
+        form3.calcT();
+        System.out.print(form3.toString());
+        System.out.print("\n");
+
+        form3 = new MultiSubjectSummary(initialData.quantifiers.get(1), Stream.concat(initialData.labels.subList(14,15).stream(), initialData.labels.subList(18,19).stream()).toList(), smokers, nonSmokers, initialData.labels.subList(5, 6), true, "palacze", "niepalacy");
+        form3.calcT();
+        System.out.print(form3.toString());
+        System.out.print("\n");
+
         // FORMA 4
+        System.out.print("FORMA 4\n");
         MultiSubjectSummary form4 = new MultiSubjectSummary(initialData.labels.subList(10,11), smokers, nonSmokers, "palacze", "niepalacy");
+        form4.calcT();
+        System.out.print(form4.toString());
+        System.out.print("\n");
+
+        form4 = new MultiSubjectSummary(Stream.concat(initialData.labels.subList(14,15).stream(), initialData.labels.subList(18,19).stream()).toList(), smokers, nonSmokers, "palacze", "niepalacy");
+        form4.calcT();
+        System.out.print(form4.toString());
+        System.out.print("\n");
+
+        form4 = new MultiSubjectSummary(Stream.concat(initialData.labels.subList(33,34).stream(), initialData.labels.subList(22,23).stream()).toList(), smokers, nonSmokers, "palacze", "niepalacy");
         form4.calcT();
         System.out.print(form4.toString());
         System.out.print("\n");

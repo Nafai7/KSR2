@@ -79,13 +79,13 @@ public class InitialData {
         // Quantifiers
         quantifiers.add(new Quantifier("brak", false, new FuzzySet(new ClassicSet(0, 1), new SinusoidalFunction(0, Math.PI/24, 12.0/24.0, 24))));
         quantifiers.add(new Quantifier("marginalnie", false, new FuzzySet(new ClassicSet(0, 1), new SinusoidalFunction(0, 0.5, -6.0/12.0, 12))));
-        quantifiers.add(new Quantifier("umiarkowanie", false, new FuzzySet(new ClassicSet(0 - Math.PI/12, 1), new SinusoidalFunction(0.5 - Math.PI/12, 0.5 + Math.PI/12, 17.0/24.0, 24))));
+        quantifiers.add(new Quantifier("umiarkowanie", false, new FuzzySet(new ClassicSet(0, 1), new SinusoidalFunction(0.5 - Math.PI/12, 0.5 + Math.PI/12, 17.0/24.0, 24))));
         quantifiers.add(new Quantifier("duzo", false, new FuzzySet(new ClassicSet(0, 1), new SinusoidalFunction(0, 0.5, -6.0/12.0, 12))));
         quantifiers.add(new Quantifier("calkowicie", false, new FuzzySet(new ClassicSet(0, 1), new SinusoidalFunction(1 - Math.PI/24, 1, 20.0/24.0, 24))));
 
         quantifiers.add(new Quantifier("ponizej 10 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TrapezoidalFunction(0, 12000, 0, 10000))));
         quantifiers.add(new Quantifier("niemalze 12.3 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TriangularFunction(10000, 15000, 12300))));
-        quantifiers.add(new Quantifier("powyzej 15 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TrapezoidalFunction(13000, 56000, 15000, 56000))));
+        quantifiers.add(new Quantifier("powyzej 15 tys", true, new FuzzySet(new ClassicSet(0, 56000), new TrapezoidalFunction(13000, 55692, 15000, 55692))));
 
         // Weights
         List<Double> tmp = new ArrayList<>();

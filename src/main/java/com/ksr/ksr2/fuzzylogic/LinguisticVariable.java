@@ -18,4 +18,8 @@ public class LinguisticVariable {
     public List<Label> getLabels() {
         return labels;
     }
+
+    public void addLabel(Label label) {
+        labels.add(label);
+    }
 }

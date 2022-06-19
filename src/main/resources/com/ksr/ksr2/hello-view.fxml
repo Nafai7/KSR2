@@ -1,16 +1,369 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.ksr.ksr2.controllers.AppController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="724.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksr.ksr2.controllers.AppController">
+  <tabs>
+    <Tab id="summaryTab" text="Jednopodmiotowe">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="532.0" prefWidth="719.0">
+               <children>
+                  <VBox prefHeight="550.0" prefWidth="724.0">
+                     <children>
+                        <HBox prefHeight="535.0" prefWidth="724.0">
+                           <children>
+                              <Pane prefHeight="300.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                                 <children>
+                                    <ChoiceBox fx:id="quantifierChoiceBox" layoutX="46.0" layoutY="204.0" prefWidth="150.0" />
+                                    <Label layoutX="66.0" layoutY="14.0" text="Kwantyfikator">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="10.0" layoutY="10.0" prefHeight="300.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                                 <children>
+                                    <Label layoutX="74.0" layoutY="14.0" text="Kwalifikator">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TreeView fx:id="qualifierTreeView" layoutX="2.0" layoutY="41.0" prefHeight="374.0" prefWidth="237.0" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="210.0" layoutY="10.0" prefHeight="300.0" prefWidth="300.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                                 <children>
+                                    <Label layoutX="63.0" layoutY="14.0" text="Summaryzator">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TreeView fx:id="summarizerTreeView" layoutX="2.0" layoutY="41.0" prefHeight="374.0" prefWidth="238.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="252.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                           <children>
+                              <Label id="summaryLabel" fx:id="summaryLabel" alignment="CENTER" layoutY="-2.0" prefHeight="53.0" prefWidth="724.0" textAlignment="CENTER" wrapText="true" />
+                              <HBox layoutX="-1.0" layoutY="51.0" prefHeight="81.0" prefWidth="724.0">
+                                 <children>
+                                    <Pane prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="14.0" prefHeight="17.0" prefWidth="3.0" text="T">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></Label>
+                                          <Label fx:id="labelT0" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font></Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="10.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T1">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT1" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="80.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T2">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT2" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="150.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T3">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT3" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="220.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T4">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT4" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="290.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T5">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT5" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="360.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T6">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT6" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="430.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T7">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT7" alignment="CENTER" layoutX="1.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="500.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T8">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT8" alignment="CENTER" layoutX="2.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="570.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T9">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT9" alignment="CENTER" layoutX="2.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="640.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T10">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT10" alignment="CENTER" layoutX="2.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="668.0" layoutY="10.0" prefHeight="82.0" prefWidth="70.0" style="-fx-border-width: 2; -fx-border-color: black;">
+                                       <children>
+                                          <Label alignment="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="27.0" prefWidth="51.0" text="T11">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="labelT11" alignment="CENTER" layoutX="2.0" layoutY="41.0" prefHeight="27.0" prefWidth="58.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </HBox>
+                           </children></Pane>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab id="multiSummaryTab" text="Wielopodmiotowe">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutY="-1.0" prefHeight="551.0" prefWidth="724.0">
+                     <children>
+                        <HBox prefHeight="458.0" prefWidth="724.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="52.0" layoutY="14.0" text="Podmioty">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="subject1ChoiceBox" layoutX="15.0" layoutY="169.0" prefWidth="150.0" />
+                                    <ChoiceBox fx:id="subject2ChoiceBox" layoutX="15.0" layoutY="294.0" prefWidth="150.0" />
+                                    <Label layoutX="58.0" layoutY="137.0" text="Podmiot 1">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="58.0" layoutY="262.0" text="Podmiot 2">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="12.0" layoutY="12.0" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="36.0" layoutY="14.0" text="Kwantyfikator">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="multiQuantifierChoiceBox" layoutX="15.0" layoutY="215.0" prefWidth="150.0" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="212.0" layoutY="12.0" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="44.0" layoutY="14.0" text="Kwalifikator">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TreeView fx:id="multiQualifierTreeView" layoutX="-1.0" layoutY="44.0" prefHeight="370.0" prefWidth="181.0" />
+                                    <CheckBox fx:id="subject1CheckBox" layoutX="6.0" layoutY="423.0" mnemonicParsing="false" text="Podmiot 1" />
+                                    <CheckBox fx:id="subject2CheckBox" layoutX="98.0" layoutY="423.0" mnemonicParsing="false" text="Podmiot 2" />
+                                 </children>
+                              </Pane>
+                              <Pane layoutX="412.0" layoutY="12.0" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="32.0" layoutY="14.0" text="Summaryzator">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TreeView fx:id="multiSummarizerTreeView" layoutY="44.0" prefHeight="410.0" prefWidth="180.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="91.0" prefWidth="724.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                           <children>
+                              <Pane layoutX="639.0" prefHeight="91.0" prefWidth="85.0" style="-fx-border-color: black; -fx-border-width: 2;">
+                                 <children>
+                                    <Label layoutX="38.0" layoutY="14.0" text="T">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelT" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="46.0" prefHeight="27.0" prefWidth="78.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Label fx:id="multiSummaryLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="9.0" prefHeight="74.0" prefWidth="622.0" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab id="makeLabelsTab" text="Własne etykiety">
+       <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="labelName" layoutX="288.0" layoutY="90.0" />
+                  <Label layoutX="302.0" layoutY="63.0" text="Nazwa etykiety">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="272.0" layoutY="132.0" text="Zmienna lingwistyczna">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="labelVariable" layoutX="288.0" layoutY="159.0" prefWidth="150.0" />
+                  <Label layoutX="273.0" layoutY="205.0" text="Funkcja przynależności">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="labelFunction" layoutX="287.0" layoutY="232.0" prefWidth="150.0" />
+                  <TextField fx:id="labelA" layoutX="362.0" layoutY="274.0" prefHeight="25.0" prefWidth="67.0" />
+                  <Label alignment="CENTER" layoutX="337.0" layoutY="273.0" prefHeight="27.0" prefWidth="25.0" text="a">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="labelB" layoutX="362.0" layoutY="307.0" prefHeight="25.0" prefWidth="67.0" />
+                  <Label alignment="CENTER" layoutX="337.0" layoutY="306.0" prefHeight="27.0" prefWidth="25.0" text="b">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="labelC" layoutX="362.0" layoutY="343.0" prefHeight="25.0" prefWidth="67.0" />
+                  <Label alignment="CENTER" layoutX="337.0" layoutY="342.0" prefHeight="27.0" prefWidth="25.0" text="c">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="labelD" layoutX="362.0" layoutY="381.0" prefHeight="25.0" prefWidth="67.0" />
+                  <Label alignment="CENTER" layoutX="337.0" layoutY="380.0" prefHeight="27.0" prefWidth="25.0" text="d">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="labelCreate" layoutX="335.0" layoutY="459.0" mnemonicParsing="false" onAction="#createLabel" text="Utwórz" />
+               </children></AnchorPane>
+       </content>
+    </Tab>
+  </tabs>
+</TabPane>

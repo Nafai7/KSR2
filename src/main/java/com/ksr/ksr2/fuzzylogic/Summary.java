@@ -70,6 +70,9 @@ public class Summary {
     }
 
     public double degreeOfQuantifierCardinality() {
+        if (T7 < 0) {
+            return -T7;
+        }
         return T7;
     }
 
@@ -266,6 +269,9 @@ public class Summary {
         result += Math.round(T4 * 1000)/1000.0 + ", ";
         result += Math.round(T5 * 1000)/1000.0 + ", ";
         result += Math.round(T6 * 1000)/1000.0 + ", ";
+        if (T7 < 0) {
+            T7 = -T7;
+        }
         result += Math.round(T7 * 1000)/1000.0 + ", ";
         result += Math.round(T8 * 1000)/1000.0 + ", ";
         result += Math.round(T9 * 1000)/1000.0 + ", ";

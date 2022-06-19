@@ -60,7 +60,7 @@ public class MultiSubjectSummary {
     }
 
     public double getT() {
-        return T;
+        return Math.round(T * 1000.0) / 1000.0;
     }
 
     private double sigmaCount(List<BodySignals> bodySignals, List<Label> labels) {
@@ -164,7 +164,7 @@ public class MultiSubjectSummary {
             }
         }
 
-        result += " [" + (Math.round(T * 1000.0) / 1000.0) + "]";
+//        result += " [" + (Math.round(T * 1000.0) / 1000.0) + "]";
 
         return result;
     }

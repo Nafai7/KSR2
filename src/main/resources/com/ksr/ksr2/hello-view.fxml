@@ -338,25 +338,25 @@
                   </Label>
                   <ChoiceBox fx:id="labelFunction" layoutX="287.0" layoutY="232.0" prefWidth="150.0" />
                   <TextField fx:id="labelA" layoutX="362.0" layoutY="274.0" prefHeight="25.0" prefWidth="67.0" />
-                  <Label alignment="CENTER" layoutX="337.0" layoutY="273.0" prefHeight="27.0" prefWidth="25.0" text="a">
+                  <Label fx:id="label1" alignment="CENTER" layoutX="217.0" layoutY="273.0" prefHeight="27.0" prefWidth="145.0" text="lewe minimum">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <TextField fx:id="labelB" layoutX="362.0" layoutY="307.0" prefHeight="25.0" prefWidth="67.0" />
-                  <Label alignment="CENTER" layoutX="337.0" layoutY="306.0" prefHeight="27.0" prefWidth="25.0" text="b">
+                  <Label fx:id="label2" alignment="CENTER" layoutX="218.0" layoutY="306.0" prefHeight="27.0" prefWidth="144.0" text="lewe maksimum">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <TextField fx:id="labelC" layoutX="362.0" layoutY="343.0" prefHeight="25.0" prefWidth="67.0" />
-                  <Label alignment="CENTER" layoutX="337.0" layoutY="342.0" prefHeight="27.0" prefWidth="25.0" text="c">
+                  <Label fx:id="label3" alignment="CENTER" layoutX="218.0" layoutY="342.0" prefHeight="27.0" prefWidth="144.0" text="prawe maksimum">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <TextField fx:id="labelD" layoutX="362.0" layoutY="381.0" prefHeight="25.0" prefWidth="67.0" />
-                  <Label alignment="CENTER" layoutX="337.0" layoutY="380.0" prefHeight="27.0" prefWidth="25.0" text="d">
+                  <Label fx:id="label4" alignment="CENTER" layoutX="219.0" layoutY="380.0" prefHeight="27.0" prefWidth="143.0" text="prawe minimum">
                      <font>
                         <Font size="18.0" />
                      </font>

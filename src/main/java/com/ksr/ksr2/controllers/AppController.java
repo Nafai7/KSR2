@@ -120,6 +120,14 @@ public class AppController {
     private TextField labelC;
     @FXML
     private TextField labelD;
+    @FXML
+    private Label label1;
+    @FXML
+    private Label label2;
+    @FXML
+    private Label label3;
+    @FXML
+    private Label label4;
 
     public void initialize() {
         initialData = App.initialData;
@@ -534,13 +542,24 @@ public class AppController {
     private void functionChanged(Integer selected) {
         labelC.setDisable(false);
         labelD.setDisable(false);
+        label1.setText("lewe minimum");
+        label2.setText("lewe maksimum");
+        label3.setText("prawe maksimum");
+        label4.setText("prawe minimum");
         switch ((String)labelFunction.getItems().get(selected)) {
             case "Trojkatna":
                 labelD.setDisable(true);
+                label2.setText("maksimum");
+                label3.setText("prawe minimum");
+                label4.setText("");
                 break;
             case "Gaussa":
                 labelC.setDisable(true);
                 labelD.setDisable(true);
+                label1.setText("wariancja");
+                label2.setText("maksimum");
+                label3.setText("");
+                label4.setText("");
                 break;
         }
     }
@@ -571,12 +590,12 @@ public class AppController {
         qualifierTreeView.setShowRoot(false);
         summarizerTreeView.setRoot(new TreeItem("Bajo jajo"));
         summarizerTreeView.setShowRoot(false);
-        for (int i = 0; i < initialData.linguisticVariables.size(); i++) {
-            TreeItem treeItem = new TreeItem(initialData.linguisticVariables.get(i).getName());
-            TreeItem treeItem2 = new TreeItem(initialData.linguisticVariables.get(i).getName());
-            for (int j = 0; j < initialData.linguisticVariables.get(i).getLabels().size(); j++) {
-                treeItem.getChildren().add(new TreeItem(initialData.linguisticVariables.get(i).getLabels().get(j).getLabel()));
-                treeItem2.getChildren().add(new TreeItem(initialData.linguisticVariables.get(i).getLabels().get(j).getLabel()));
+        for (LinguisticVariable linguisticVariable: initialData.linguisticVariables) {
+            TreeItem treeItem = new TreeItem(linguisticVariable.getName());
+            TreeItem treeItem2 = new TreeItem(linguisticVariable.getName());
+            for (com.ksr.ksr2.fuzzylogic.Label label: linguisticVariable.getLabels()) {
+                treeItem.getChildren().add(new TreeItem(label.getLabel()));
+                treeItem2.getChildren().add(new TreeItem(label.getLabel()));
             }
             qualifierTreeView.getRoot().getChildren().add(treeItem);
             summarizerTreeView.getRoot().getChildren().add(treeItem2);
@@ -590,9 +609,9 @@ public class AppController {
         for (LinguisticVariable linguisticVariable: initialData.linguisticVariables) {
             TreeItem treeItem = new TreeItem(linguisticVariable.getName());
             TreeItem treeItem2 = new TreeItem(linguisticVariable.getName());
-            for (int i = 0; i < linguisticVariable.getLabels().size(); i++) {
-                treeItem.getChildren().add(new TreeItem(linguisticVariable.getLabels().get(i).getLabel()));
-                treeItem2.getChildren().add(new TreeItem(linguisticVariable.getLabels().get(i).getLabel()));
+            for (com.ksr.ksr2.fuzzylogic.Label label: linguisticVariable.getLabels()) {
+                treeItem.getChildren().add(new TreeItem(label.getLabel()));
+                treeItem2.getChildren().add(new TreeItem(label.getLabel()));
             }
             multiQualifierTreeView.getRoot().getChildren().add(treeItem);
             multiSummarizerTreeView.getRoot().getChildren().add(treeItem2);
@@ -603,17 +622,16 @@ public class AppController {
     @FXML
     private void createLabel() {
         if (labelVariable.getValue() != null) {
-            int index = -1;
             for (int i = 0; i < initialData.linguisticVariables.size(); i++) {
                 if (initialData.linguisticVariables.get(i).getName().equals(labelVariable.getValue())) {
                     ClassicSet classicSet = initialData.linguisticVariables.get(i).getLabels().get(0).getFuzzySet().getUniverse();
                     MembershipFunction function;
                     switch ((String) labelFunction.getValue()) {
                         case "Trapezowa":
-                            function = new TrapezoidalFunction(Integer.valueOf(labelA.getText()), Integer.valueOf(labelB.getText()), Integer.valueOf(labelC.getText()), Integer.valueOf(labelD.getText()));
+                            function = new TrapezoidalFunction(Integer.valueOf(labelA.getText()), Integer.valueOf(labelD.getText()), Integer.valueOf(labelB.getText()), Integer.valueOf(labelC.getText()));
                             break;
                         case "Trojkatna":
-                            function = new TriangularFunction(Integer.valueOf(labelA.getText()), Integer.valueOf(labelB.getText()), Integer.valueOf(labelC.getText()));
+                            function = new TriangularFunction(Integer.valueOf(labelA.getText()), Integer.valueOf(labelC.getText()), Integer.valueOf(labelB.getText()));
                             break;
                         case "Gaussa":
                             function = new GaussFunction(Integer.valueOf(labelA.getText()), Integer.valueOf(labelB.getText()));
@@ -622,19 +640,11 @@ public class AppController {
                             function = new TrapezoidalFunction(Integer.valueOf(labelA.getText()), Integer.valueOf(labelB.getText()), Integer.valueOf(labelC.getText()), Integer.valueOf(labelD.getText()));
                             break;
                     }
-
-                    try {
-                        App.restart(initialData.linguisticVariables.get(i).getName(), new com.ksr.ksr2.fuzzylogic.Label(initialData.linguisticVariables.get(i).getName(), labelName.getText(), new FuzzySet(classicSet, function)));
-                    } catch (Exception ex) {
-                        System.err.print(ex);
-                    }
-//                    App.initialData.labels.add(new com.ksr.ksr2.fuzzylogic.Label(initialData.linguisticVariables.get(i).getName(), labelName.getText(), new FuzzySet(classicSet, function)));
-//                    index = i;
+                    initialData.linguisticVariables.get(i).addLabel(new com.ksr.ksr2.fuzzylogic.Label(initialData.linguisticVariables.get(i).getName(), labelName.getText(), new FuzzySet(classicSet, function)));
+                    rebuildLabels();
+                    break;
                 }
             }
-//            if (index > -1) {
-//                App.initialData.linguisticVariables.get(index).getLabels().add(initialData.labels.get(initialData.labels.size() - 1));
-//            }
         }
     }
 

@@ -77,6 +77,9 @@ public class Summary {
     }
 
     public double degreeOfSummarizerCardinality() {
+        if (T8 < 0) {
+            return -T8;
+        }
         return T8;
     }
 
@@ -85,6 +88,9 @@ public class Summary {
     }
 
     public double degreeOfQualifierCardinality() {
+        if (T10 < 0) {
+            return -T10;
+        }
         return T10;
     }
 

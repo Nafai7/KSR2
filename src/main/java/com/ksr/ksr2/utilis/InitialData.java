@@ -65,16 +65,16 @@ public class InitialData {
 
 
         // Linguistic Variables
-        linguisticVariables.add(new LinguisticVariable("cisnienie skurczowe krwi", labels.subList(0, 7)));
-        linguisticVariables.add(new LinguisticVariable("cisnienie rozkurczowe krwi", labels.subList(7, 14)));
-        linguisticVariables.add(new LinguisticVariable("cukier we krwi na czczo", labels.subList(14, 18)));
-        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu", labels.subList(18, 21)));
-        linguisticVariables.add(new LinguisticVariable("poziom triglycerydow", labels.subList(21, 23)));
-        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu HDL", labels.subList(23, 25)));
-        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu LDL", labels.subList(25, 28)));
-        linguisticVariables.add(new LinguisticVariable("poziom hemoglobiny", labels.subList(28, 31)));
-        linguisticVariables.add(new LinguisticVariable("poziom AST", labels.subList(31, 33)));
-        linguisticVariables.add(new LinguisticVariable("poziom ALT", labels.subList(33, 35)));
+        linguisticVariables.add(new LinguisticVariable("cisnienie skurczowe krwi", new ArrayList<>(labels.subList(0, 7))));
+        linguisticVariables.add(new LinguisticVariable("cisnienie rozkurczowe krwi", new ArrayList<>(labels.subList(7, 14))));
+        linguisticVariables.add(new LinguisticVariable("cukier we krwi na czczo", new ArrayList<>(labels.subList(14, 18))));
+        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu", new ArrayList<>(labels.subList(18, 21))));
+        linguisticVariables.add(new LinguisticVariable("poziom triglycerydow", new ArrayList<>(labels.subList(21, 23))));
+        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu HDL", new ArrayList<>(labels.subList(23, 25))));
+        linguisticVariables.add(new LinguisticVariable("poziom cholesterolu LDL", new ArrayList<>(labels.subList(25, 28))));
+        linguisticVariables.add(new LinguisticVariable("poziom hemoglobiny", new ArrayList<>(labels.subList(28, 31))));
+        linguisticVariables.add(new LinguisticVariable("poziom AST", new ArrayList<>(labels.subList(31, 33))));
+        linguisticVariables.add(new LinguisticVariable("poziom ALT", new ArrayList<>(labels.subList(33, 35))));
 
         // Quantifiers
         quantifiers.add(new Quantifier("brak", false, new FuzzySet(new ClassicSet(0, 1), new SinusoidalFunction(0, Math.PI/24, 12.0/24.0, 24))));

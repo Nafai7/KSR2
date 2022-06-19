@@ -25,7 +25,6 @@ public class App extends Application {
 
     private static List<BodySignals> people;
     public static InitialData initialData = new InitialData();
-    private static Stage stage;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -34,24 +33,10 @@ public class App extends Application {
         stage.setTitle("KSR2");
         stage.setScene(scene);
         stage.show();
-        this.stage = stage;
     }
 
     public static List<BodySignals> getPeople() {
         return people;
-    }
-
-    public static void restart(String toVariable, Label newLabel) throws IOException {
-//        stage.close();
-        for (LinguisticVariable linguisticVariable: initialData.linguisticVariables) {
-            if (linguisticVariable.getName().equals(toVariable)) {
-                linguisticVariable.addLabel(newLabel);
-            }
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.show();
     }
 
     public static void main(String[] args) {

@@ -29,8 +29,8 @@ public class BodySignalsReader {
                         Double.valueOf(values[15]),
                         Double.valueOf(values[16]),
                         Double.valueOf(values[17]),
-                        Double.valueOf(values[19]),
                         Double.valueOf(values[20]),
+                        Double.valueOf(values[21]),
                         convertToBoolean(values[26])));
                 counter++;
             }

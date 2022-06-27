@@ -3,6 +3,7 @@ package com.ksr.ksr2.fuzzylogic;
 import com.ksr.ksr2.model.BodySignals;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Summary {
@@ -179,8 +180,13 @@ public class Summary {
             List<Double> qualifierMembership = new ArrayList<>();
 
             for (int i = 0; i < summarizers.size(); i++) {
-                Label summarizer = summarizers.get(i);
-                double membership = summarizer.getFuzzySet().getMembershipFunction().getMembership(bodySignal.get(summarizer.getLinguisticVariableName()));
+//                System.out.print(summarizers.get(i).getLinguisticVariableName());
+//                System.out.print("\n");
+//                System.out.print(bodySignal.get(summarizers.get(i).getLinguisticVariableName()));
+                double membership = summarizers.get(i).getFuzzySet().getMembershipFunction().getMembership(bodySignal.get(summarizers.get(i).getLinguisticVariableName()));
+//                System.out.print("\n");
+//                System.out.print(membership);
+//                System.out.print("\n");
                 summarizerMembership.add(membership);
                 if (membership > 0) {
                     cntSummarizersMoreThanZero[i] += 1;
@@ -191,11 +197,11 @@ public class Summary {
                 qualifierMembership.add(qualifier.getFuzzySet().getMembershipFunction().getMembership(bodySignal.get(qualifier.getLinguisticVariableName())));
             }
 
-            double tmp = summarizerMembership.stream().sorted().toList().get(0);
+            double tmp = Collections.min(summarizerMembership);
             double tmp2 = 1.0;
 
             if (qualifiers.size() > 0) {
-                tmp2 = qualifierMembership.stream().sorted().toList().get(0);
+                tmp2 = Collections.min(qualifierMembership);
             }
 
             double membership = Math.min(tmp, tmp2);
